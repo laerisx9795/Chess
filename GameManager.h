@@ -12,14 +12,14 @@ public:
 
 	bool checkMate(vector<Piece> pieces);
 	bool checkDraw();
+	bool gameLoop();
 	int result();
-	void setup();
 
 	/* member varible */
 	Player* players[2];	/* two players. 0 : white; 1 : black */
 	int current_player;	/* point to current player */
-	int state;	/* state of the game. */
-	int gameResult;	/* result of this game. 0 : continue; 1 : player1 wins; 2 : player2 wins; 3 : draw */
+	int state;	/* state of the game. 0 : continue; other : finish */
+	int gameResult;	/* 1 : player1 wins; 2 : player2 wins; 3 : draw */
 	Board board;
 	Viewer viewer;	/* print all information */
 
