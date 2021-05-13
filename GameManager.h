@@ -10,7 +10,8 @@ public:
 	/* Constructor */
 	GameManager();
 
-	bool checkMate();
+	bool checkMate(vector<Piece> pieces);
+	bool checkDraw();
 	int result();
 	void setup();
 
