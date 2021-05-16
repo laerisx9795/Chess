@@ -9,6 +9,6 @@ public:
 	HumanPlayer();
 
 	virtual void OnMove() override;
-	void OnPromote()override;
-	bool promote() override;
+	//void OnPromote()override;
+	bool promote(string type, int targetY) override;
 };
