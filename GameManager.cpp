@@ -26,9 +26,9 @@ bool GameManager::checkDraw() {
 bool GameManager::gameLoop() {
 	if (state == 0) {	/* game loop */
 		players[current_player]->OnMove();	/* move piece */
-		if (players[current_player]->promote()) {	/* Pawn promote */
-			players[current_player]->OnPromote();
-		}
+		//if (players[current_player]->promote()) {	/* Pawn promote */
+		//	players[current_player]->OnPromote();
+		//}
 		state = result();	/* check gameover */	
 		viewer.Print(state);	/* print out board, pieces and other information */
 		current_player = (current_player + 1) % 2;	/* next player */
