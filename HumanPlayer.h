@@ -7,8 +7,9 @@ class HumanPlayer :public Player {
 public:
 	/* Constructor */
 	HumanPlayer();
+	HumanPlayer(int i);	/* for second player */
 
-	virtual void OnMove() override;
-	//void OnPromote()override;
-	bool promote(string type, int targetY) override;
+	virtual bool OnMove() override;
+	void OnPromote(char type, int y, int x) override;
+	bool promote(char type, int targetY) override;
 };

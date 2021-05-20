@@ -7,5 +7,5 @@ public:
 	/* Constructor */
 	Viewer();
 
-	void Print();
+	void Print(int result);
 };

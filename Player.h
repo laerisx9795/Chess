@@ -9,9 +9,9 @@ public:
 	/* Constructor */
 	Player();
 
-	virtual void OnMove(/* Board& const board, Position& outFromPos, Position& outToPos */) = 0;
-	//virtual void OnPromote(/* Board& const board, Position& const pawnPos, PieceType& outType*/) = 0;
-	virtual bool promote(string type, int targetY) = 0;
+	virtual bool OnMove(/* Board& const board, Position& outFromPos, Position& outToPos */) = 0;
+	virtual void OnPromote(char type, int y, int x) = 0;
+	virtual bool promote(char type, int targetY) = 0;
 
 	/* member variable */
 	vector<Piece> pieces;

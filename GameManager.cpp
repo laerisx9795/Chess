@@ -12,20 +12,35 @@ GameManager::GameManager() {
 	gameResult = 0;
 }
 
-bool GameManager::checkMate(vector<Piece> pieces) {
-	for (int i = 0; i < pieces.size(); i++) {
-		if (pieces.at(i).type == "King") {
-			return false;
+int GameManager::checkMate(Piece* board[][10]) {
+	bool K = false;
+	bool k = false;
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			if (board[i][j]->type == 'K') {
+				K = true;
+			}
+			else if (board[i][j]->type == 'k') {
+				k = true;
+			}
 		}
 	}
-	return true;
+	if (K && !k) {	/* player2 lose */
+		return 1;
+	}
+	else if (!K && k) {	/* player1 lose */
+		return 2;
+	}
+	else {
+		return 0;
+	}
 }
 bool GameManager::checkDraw() {
-
+	return false;
 }
 bool GameManager::gameLoop() {
 	if (state == 0) {	/* game loop */
-		players[current_player]->OnMove();	/* move piece */
+		while (!players[current_player]->OnMove());	/* move piece */
 		//if (players[current_player]->promote()) {	/* Pawn promote */
 		//	players[current_player]->OnPromote();
 		//}
@@ -41,10 +56,10 @@ bool GameManager::gameLoop() {
 	}
 }
 int GameManager::result() {
-	if (checkMate(players[0]->pieces)) {	/* player1's King isn't exist -> player2 wins */
+	if (checkMate(players[0]->pieces.at(0).board) == 2) {	/* player1's King isn't exist -> player2 wins */
 		return 2;
 	}
-	else if (checkMate(players[1]->pieces)) {	/* player2's King isn't exist -> player1 wins */
+	else if (checkMate(players[1]->pieces.at(0).board) == 1) {	/* player2's King isn't exist -> player1 wins */
 		return 1;
 	}
 	else if (checkDraw()) {	/* draw */
